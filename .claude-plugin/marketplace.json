@@ -1,0 +1,15 @@
+{
+  "name": "aria",
+  "description": "Aria for Claude Code: sign in with Aria, share her memory, take tasks, and talk to your session from the Aria app.",
+  "owner": { "name": "Aria", "url": "https://aria.paralleluniverse.ai" },
+  "plugins": [
+    {
+      "name": "aria",
+      "source": "./plugins/aria",
+      "description": "Connect Claude Code to Aria. Sign in with /aria:connect.",
+      "category": "productivity",
+      "keywords": ["aria", "memory", "delegate", "voice"],
+      "homepage": "https://aria.paralleluniverse.ai"
+    }
+  ]
+}

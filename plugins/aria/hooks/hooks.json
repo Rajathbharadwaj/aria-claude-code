@@ -1,0 +1,44 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3",
+            "args": [
+              "${CLAUDE_PLUGIN_ROOT}/bin/aria_preflight.py"
+            ],
+            "timeout": 5,
+            "description": "Tell the user how to connect, but only when no key is configured"
+          },
+          {
+            "type": "command",
+            "command": "python3",
+            "args": [
+              "${CLAUDE_PLUGIN_ROOT}/bin/aria_cc_gate.py"
+            ],
+            "timeout": 5,
+            "description": "Tell Aria the risky-action gate is loaded in this session"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3",
+            "args": [
+              "${CLAUDE_PLUGIN_ROOT}/bin/aria_cc_gate.py"
+            ],
+            "timeout": 60,
+            "description": "While the user drives this session from the Aria app, hold a risky tool for their yes"
+          }
+        ]
+      }
+    ]
+  }
+}
