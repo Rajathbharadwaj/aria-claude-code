@@ -39,6 +39,38 @@
           }
         ]
       }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3",
+            "args": [
+              "${CLAUDE_PLUGIN_ROOT}/bin/aria_turn_end.py"
+            ],
+            "async": true,
+            "timeout": 30,
+            "description": "Tell Aria the turn ended, so a session left waiting on you rings you after 10 minutes (your Claude call setting decides)"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3",
+            "args": [
+              "${CLAUDE_PLUGIN_ROOT}/bin/aria_turn_end.py"
+            ],
+            "async": true,
+            "timeout": 30,
+            "description": "You answered: a session that was waiting on you no longer rings you"
+          }
+        ]
+      }
     ]
   }
 }

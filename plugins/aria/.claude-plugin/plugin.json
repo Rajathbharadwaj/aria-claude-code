@@ -1,7 +1,7 @@
 {
   "name": "aria",
   "description": "Connect Claude Code to Aria. Sign in with /aria:connect. She reads your memory before planning, queues work to this session by voice or text, texts you the result, and lets you talk to this session from the Aria app.",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "author": {
     "name": "Aria"
   },
