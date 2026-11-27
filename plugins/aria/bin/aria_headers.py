@@ -87,6 +87,18 @@ def main() -> int:
     except Exception as exc:  # noqa: BLE001 — see rule 2: never fail the auth
         print(f"[aria] no workspace headers: {exc}", file=sys.stderr)
 
+    # §CC-SWITCH — this computer's name, so the app can show "<session> ·
+    # <machine>" and "switch to the work laptop" has something to match.
+    # Latin-1 only (a header is latin-1); anything else is dropped, not sent.
+    try:
+        import socket
+
+        host = socket.gethostname().strip()[:64]
+        if host and host.isascii():
+            headers["X-Aria-Host"] = host
+    except Exception as exc:  # noqa: BLE001 — see rule 2
+        print(f"[aria] no host header: {exc}", file=sys.stderr)
+
     sys.stdout.write(json.dumps(headers))
     return 0
 
